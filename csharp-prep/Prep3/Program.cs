@@ -2,7 +2,7 @@ using System;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main(string[] arguments)
     {
         // Console.WriteLine("Hello Prep3 World!");
         string keepGuessing = "yes";

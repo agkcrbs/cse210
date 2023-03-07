@@ -3,7 +3,7 @@
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main(string[] arguments)
     {
         // Console.WriteLine("Hello Prep4 World!");
 
