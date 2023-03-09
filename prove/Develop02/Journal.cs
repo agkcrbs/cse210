@@ -1,3 +1,4 @@
+using System.IO;
 
 class Journal
 {
@@ -19,18 +20,37 @@ class Journal
     // This builds a journal entry object and adds it to the current journal.
     public void CreateJournalEntry(string date, string prompt, string response)
     {
-        Entry myEntry = new Entry();
-        myEntry._date = date;
-        myEntry._prompt = prompt;
-        myEntry._response = response;
-        myEntry.GetEntryAsCSV();
+        Entry myEntry = new Entry(date, prompt, response);
+        // myEntry._date = date;
+        // myEntry._prompt = prompt;
+        // myEntry._response = response;
+        // myEntry.FormatEntryAsCSV();
         _entryList.Add(myEntry);
     }
 
     // This saves the current journal to a CSV file.
-    public void SaveToCSV(string fileName, string[] data)
+    public void SaveToCSV(string fileName)
     {
-        File.WriteAllLines(fileName, data);
+        if (_entryList.Count == 0)
+        {
+            Console.WriteLine("\nThere is nothing to save yet.  Please write an entry.");
+        }
+        else
+        {
+            string saveString = "";
+            foreach (Entry entryItem in _entryList)
+            {
+                entryItem.FormatEntryAsCSV();
+                saveString += entryItem._CSVString;
+                // using (StreamWriter outputFile = new StreamWriter(fileName))
+                // {
+                //     // The "StreamWriter" object can write single lines.  There is no "File.WriteLine" method.
+                //     outputFile.WriteLine(entryItem._CSVString);
+                // }
+            }
+            File.WriteAllText(fileName, saveString);
+            Console.WriteLine("\nEntries saved.");
+        }
     }
 
     // This gets the saved journal from a CSV file.
@@ -38,15 +58,18 @@ class Journal
     {
         if (!File.Exists(fileName))
         {
-            Console.WriteLine("The file doesn't exist yet.  Write to it first.");
+            Console.WriteLine("\nThe file doesn't exist yet.  Please save it first.");
         }
         else
         {
-            string[] fileData = File.ReadAllLines(fileName);
-            foreach (string line in fileData)
+            string[] savedEntries = File.ReadAllLines(fileName);
+            foreach (string line in savedEntries)
             {
-                Console.WriteLine($"Line {line}");
+                Entry loadingEntry = new Entry(null, null, null);
+                loadingEntry.BuildEntryFromCSV(line);
+                _entryList.Add(loadingEntry);
             }
+            Console.WriteLine("\nEntries loaded.");
         }
     }
 
@@ -63,11 +86,11 @@ class Journal
     {
         if (_entryList.Count == 1)
         {
-            Console.WriteLine($"There is 1 entry.");
+            Console.WriteLine($"\nThere is 1 entry.");
         }
         else
         {
-            Console.WriteLine($"There are {_entryList.Count} entries.");
+            Console.WriteLine($"\nThere are {_entryList.Count} entries.");
         }
     }
 }

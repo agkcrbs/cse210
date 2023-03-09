@@ -7,22 +7,20 @@ class Program
         // Console.WriteLine("Hello Develop02 World!");
         Journal myJournal = new Journal();
         PromptGenerator myPrompt = new PromptGenerator();
-
-        DateTime currentTime = DateTime.Now;
-        string date = currentTime.ToShortDateString();
-
+        string fileName = "journals.CSV";
         string menuUserInput = "0";
         List<string> menuList = new List<string>
         {
-            "Please select one of the following choices:\n", 
-            "1. Write\n", 
-            "2. Display\n", 
-            "3. Load\n", 
-            "4. Save\n", 
+            "\nPlease select one of the following choices:\n", 
+            "1. Write an entry\n", 
+            "2. Display entries\n", 
+            "3. Load entries from file (overwrite current entries)\n", 
+            "4. Save entries to file (overwrite file)\n", 
             "5. Quit\n", 
-            "What would you like to do? "
+            "What would you like to do? ", 
         };
 
+        Console.WriteLine("\nWelcome to the journal prompter.");
 
         while (menuUserInput != "5")
         {
@@ -35,16 +33,19 @@ class Program
             {
                 case "1":
                     string prompt = myPrompt.GetRandomPrompt();
-                    Console.WriteLine(prompt);
+                    Console.WriteLine("\n" + prompt);
                     string response = Console.ReadLine();
-                    myJournal.CreateJournalEntry(date, prompt, response);
+                    myJournal.CreateJournalEntry(GetDate(), prompt, response);
                     break;
                 case "2":
                     myJournal.DisplayJournalEntries();
                     break;
                 case "3":
+                    myJournal._entryList.Clear();
+                    myJournal.LoadFromCSV(fileName);
                     break;
                 case "4":
+                    myJournal.SaveToCSV(fileName);
                     break;
                 case "5":
                     break;
@@ -53,5 +54,11 @@ class Program
             }
         }
 
+    }
+
+    static string GetDate()
+    {
+        DateTime currentTime = DateTime.Now;
+        return currentTime.ToShortDateString();
     }
 }

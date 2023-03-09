@@ -6,7 +6,7 @@ class PromptGenerator
         "Where did I go today?", 
         "Whom do I remember talking with today?", 
         "What memorable things happened today?", 
-        "Did anything unusually especially fortunate happen today?", 
+        "Did anything especially fortunate happen today?", 
         "What was difficult about this day?", 
         "What choices might have been improved upon this day?", 
     };
