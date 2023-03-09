@@ -1,3 +1,7 @@
+/* Exceeding requirements:
+What I have added to the core requirements are a method that counts the 
+number of entries and several situational troubleshooting messages.*/
+
 using System;
 
 class Program
