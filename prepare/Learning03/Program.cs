@@ -5,6 +5,8 @@ class Program
     static void Main(string[] args)
     {
         // Console.WriteLine("Hello Learning03 World!");
+
+        // Practice setting/getting fractions:
         Fraction myFraction1 = new Fraction();
         Console.WriteLine(myFraction1.GetFractionString());
 
@@ -22,6 +24,7 @@ class Program
         Fraction myFraction4 = new Fraction(1, 3);
         Console.WriteLine(myFraction4.GetFractionString());
 
+        // More fractions/decimals:
         Fraction myFraction5 = new Fraction();
         Console.WriteLine($"\n{myFraction5.GetNumerator()}/{myFraction5.GetDenominator()}");
         Console.WriteLine(myFraction5.GetFractionString());
