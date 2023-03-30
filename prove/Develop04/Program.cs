@@ -1,3 +1,4 @@
+// Additions: I made a cuter spinner.  I shuffled the prompts.
 using System;
 
 class Program
