@@ -1,0 +1,6 @@
+17
+ChecklistGoal|||True|||go|||go on|||1|||3|||2|||2
+SimpleGoal|||True|||go out|||go outside once|||5
+EternalGoal|||False|||no murder|||never murder anyone.|||100
+SimpleGoal|||True|||pet dog|||Pat the dog on the head.|||1
+ChecklistGoal|||False|||stand|||stand up thrice|||1|||3|||3|||2
