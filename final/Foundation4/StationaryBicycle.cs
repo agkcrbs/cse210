@@ -6,6 +6,11 @@ public class StationaryBicycle : Activity
     public StationaryBicycle()
     {
         _activityType = "Cycling";
+        PromptMinutes();
+    }
+
+    public override void PromptOtherInformation()
+    {
         Console.Write("What was the average speed (mph)? ");
         _speed = float.Parse(Console.ReadLine());
     }
@@ -18,9 +23,4 @@ public class StationaryBicycle : Activity
     {
         return _speed;
     }
-
-    // public override void GetSummary()
-    // {
-    //     Console.WriteLine(_dateString + " " + "Running" + " " + $"({_lengthInMinutes} min)- Distance: 0 miles, Speed: 0 mph, Pace: 0 min per mile");
-    // }
 }

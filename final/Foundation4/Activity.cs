@@ -8,10 +8,17 @@ public abstract class Activity
     public Activity()
     {
         _dateString = DateTime.Today.ToString("dd MMM yyyy");
-        Console.Write("How many minutes was the exercise? ");
-        _lengthInMinutes = int.Parse(Console.ReadLine());
     }
 
+    public void PromptMinutes()
+    {
+        Console.WriteLine($"{GetActivityType()} Exercise \n------------------");
+        Console.Write("How many minutes was the exercise? ");
+        _lengthInMinutes = int.Parse(Console.ReadLine());
+        PromptOtherInformation();
+    }
+
+    public abstract void PromptOtherInformation();
     public abstract float GetDistance();
     public abstract float GetSpeed();
     public float GetPace()
@@ -29,6 +36,6 @@ public abstract class Activity
     // public abstract void GetSummary();
     public void GetSummary()
     {
-        Console.WriteLine(_dateString + $" {_activityType} " + $"({_lengthInMinutes} min)- Distance: {GetDistance()} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min per mile");
+        Console.WriteLine($"{_dateString} - {_activityType} ({_lengthInMinutes} min) - Distance: {GetDistance().ToString("F1")} miles, Speed: {GetSpeed().ToString("F1")} mph, Pace: {GetPace().ToString("F1")} min per mile");
     }
 }

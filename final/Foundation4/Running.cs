@@ -6,6 +6,11 @@ public class Running : Activity
     public Running()
     {
         _activityType = "Running";
+        PromptMinutes();
+    }
+
+    public override void PromptOtherInformation()
+    {
         Console.Write("How many miles were run? ");
         _distance = float.Parse(Console.ReadLine());
     }
@@ -18,14 +23,4 @@ public class Running : Activity
     {
         return GetDistance() / _lengthInMinutes * 60;
     }
-
-    // public override string GetActivityType()
-    // {
-    //     return _activityType;
-    // }
-
-    // public override void GetSummary()
-    // {
-    //     Console.WriteLine(_dateString + " " + "Running" + " " + $"({_lengthInMinutes} min)- Distance: 0 miles, Speed: 0 mph, Pace: 0 min per mile");
-    // }
 }

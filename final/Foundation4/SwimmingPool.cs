@@ -6,6 +6,11 @@ public class SwimmingPool : Activity
     public SwimmingPool()
     {
         _activityType = "Swimming";
+        PromptMinutes();
+    }
+
+    public override void PromptOtherInformation()
+    {
         Console.Write("How many laps were swum? ");
         _lapNumber = float.Parse(Console.ReadLine());
     }
@@ -18,9 +23,4 @@ public class SwimmingPool : Activity
     {
         return GetDistance() / _lengthInMinutes * 60;
     }
-
-    // public override void GetSummary()
-    // {
-    //     Console.WriteLine(_dateString + " " + "Running" + " " + $"({_lengthInMinutes} min)- Distance: 0 miles, Speed: 0 mph, Pace: 0 min per mile");
-    // }
 }
